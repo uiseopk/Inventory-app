@@ -516,6 +516,11 @@ function showToast(msg,color){
   t.style.display='block';t.style.background=color||'var(--chg)';t.style.color='#fff';t.textContent=msg;
   setTimeout(function(){t.style.display='none';},2500);
 }
+function showSync(msg,color){
+  var t=document.getElementById('sync-bar');if(!t)return;
+  t.style.display='block';t.style.background=color||'var(--chg)';t.style.color='#fff';t.textContent=msg;
+  if(color!=='var(--red)'){setTimeout(function(){t.style.display='none';},2500);}
+}
 
 function autoDeductIngs(item,delta){
   if(!item.recipe||!item.recipe.ings||!item.recipe.ings.length)return;
