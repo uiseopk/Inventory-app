@@ -6,7 +6,10 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="재고관리">
-<meta name="theme-color" content="#1a1a1a">
+<meta name="theme-color" content="#2D2A26">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <meta name="mobile-web-app-capable" content="yes">
 <title>정육식당 재고관리</title>
 <script>
@@ -17,8 +20,8 @@ var manifestData = {
   description: '옥련갈비 평택본점 재고 관리 앱',
   start_url: './',
   display: 'standalone',
-  background_color: '#f5f4f0',
-  theme_color: '#1a1a1a',
+  background_color: '#FAF8F5',
+  theme_color: '#2D2A26',
   orientation: 'portrait',
   icons: [
     {
@@ -37,131 +40,393 @@ link.href = manifestURL;
 document.head.appendChild(link);
 </script>
 <style>
+/* ═══ OKRYUN GALBI — Premium Butcher Shop Design ═══ */
 :root{
-  --bg:#f5f4f0;--sf:#fff;--sf2:#f0efe9;
-  --b:rgba(0,0,0,0.08);--b2:rgba(0,0,0,0.15);
-  --t:#1a1a1a;--t2:#6b6b6b;--t3:#9a9a9a;--ac:#1a1a1a;
-  --red:#c0392b;--red-bg:#fdf2f2;
-  --org:#b7600a;--org-bg:#fef8f0;
-  --grn:#1e7e34;--grn-bg:#f0faf2;
-  --blu:#1a5c9e;--blu-bg:#f0f6ff;
-  --plus:#0a6e3a;--plus-bg:#e8f7ef;
-  --minus:#9b1c1c;--minus-bg:#fef2f2;
-  --chg:#1a5c9e;--chg-bg:#ebf3ff;
-  --r:14px;--rs:8px;--th:64px;--sb:env(safe-area-inset-bottom,0px);
+  --bg:#FAF8F5;--sf:#FFFFFF;--sf2:#F3F0EB;
+  --b:rgba(45,42,38,0.08);--b2:rgba(45,42,38,0.14);
+  --t:#2D2A26;--t2:#7A7168;--t3:#A69E94;--ac:#2D2A26;
+  --accent:#8B6F47;--accent-bg:rgba(139,111,71,0.08);
+  --red:#C4533A;--red-bg:#FDF0ED;
+  --org:#D4883A;--org-bg:#FDF6EE;
+  --grn:#3A7D5C;--grn-bg:#EEF7F2;
+  --blu:#5B7FA6;--blu-bg:#EFF4F9;
+  --plus:#3A7D5C;--plus-bg:#EAF5EF;
+  --minus:#C4533A;--minus-bg:#FDF0ED;
+  --chg:#5B7FA6;--chg-bg:#EBF1F8;
+  --shadow-sm:0 1px 3px rgba(45,42,38,0.06),0 1px 2px rgba(45,42,38,0.04);
+  --shadow-md:0 4px 12px rgba(45,42,38,0.07),0 2px 4px rgba(45,42,38,0.04);
+  --shadow-lg:0 12px 32px rgba(45,42,38,0.1),0 4px 8px rgba(45,42,38,0.05);
+  --r:16px;--rs:10px;--th:64px;--sb:env(safe-area-inset-bottom,0px);
 }
 @media(prefers-color-scheme:dark){:root{
-  --bg:#0f0f0f;--sf:#1c1c1e;--sf2:#2c2c2e;
-  --b:rgba(255,255,255,0.08);--b2:rgba(255,255,255,0.15);
-  --t:#f2f2f7;--t2:#aeaeb2;--t3:#636366;--ac:#f2f2f7;
-  --red:#ff6b6b;--red-bg:#2d1515;
-  --org:#ffa726;--org-bg:#2d1f0a;
-  --grn:#4caf77;--grn-bg:#0d2418;
-  --blu:#5b9bd5;--blu-bg:#0d1f35;
-  --plus:#34d399;--plus-bg:#052e1c;
-  --minus:#f87171;--minus-bg:#2d0f0f;
-  --chg:#5b9bd5;--chg-bg:#0d1f35;
+  --bg:#1A1816;--sf:#252220;--sf2:#302D2A;
+  --b:rgba(242,237,232,0.07);--b2:rgba(242,237,232,0.12);
+  --t:#F2EDE8;--t2:#A69E94;--t3:#6B6560;--ac:#F2EDE8;
+  --accent:#C4A06A;--accent-bg:rgba(196,160,106,0.12);
+  --red:#E07460;--red-bg:#2F1F1B;
+  --org:#E8A455;--org-bg:#2D2318;
+  --grn:#5CA87A;--grn-bg:#1A2D22;
+  --blu:#7DA3C8;--blu-bg:#1A2533;
+  --plus:#5CA87A;--plus-bg:#142A1E;
+  --minus:#E07460;--minus-bg:#2F1F1B;
+  --chg:#7DA3C8;--chg-bg:#1A2533;
+  --shadow-sm:0 1px 3px rgba(0,0,0,0.2),0 1px 2px rgba(0,0,0,0.15);
+  --shadow-md:0 4px 12px rgba(0,0,0,0.25),0 2px 4px rgba(0,0,0,0.15);
+  --shadow-lg:0 12px 32px rgba(0,0,0,0.35),0 4px 8px rgba(0,0,0,0.2);
 }}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{height:100%;background:var(--bg);font-family:-apple-system,'Apple SD Gothic Neo',BlinkMacSystemFont,sans-serif;color:var(--t);overscroll-behavior:none}
+html,body{
+  height:100%;
+  background:var(--bg);
+  font-family:'Plus Jakarta Sans','Noto Sans KR',-apple-system,sans-serif;
+  color:var(--t);
+  overscroll-behavior:none;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+/* Subtle grain overlay */
+body::after{
+  content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
+  opacity:0.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat:repeat;background-size:180px;
+}
+@media(prefers-color-scheme:dark){
+  body::after{opacity:0.04;}
+}
+
+/* ═══ STAGGERED REVEAL ANIMATIONS ═══ */
+@keyframes fadeSlideUp{
+  from{opacity:0;transform:translateY(14px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes scaleIn{
+  from{opacity:0;transform:scale(0.96)}
+  to{opacity:1;transform:scale(1)}
+}
+.mets{animation:fadeSlideUp .45s ease both}
+.stb{animation:fadeSlideUp .4s .05s ease both}
+.sec{animation:fadeSlideUp .35s ease both}
+.card{animation:scaleIn .35s ease both}
+.al{animation:fadeSlideUp .35s ease both}
+.met:nth-child(1){animation:fadeSlideUp .35s .02s ease both}
+.met:nth-child(2){animation:fadeSlideUp .35s .06s ease both}
+.met:nth-child(3){animation:fadeSlideUp .35s .10s ease both}
+.met:nth-child(4){animation:fadeSlideUp .35s .14s ease both}
+
+/* ═══ LAYOUT ═══ */
 #W{display:flex;flex-direction:column;height:100vh;height:100dvh}
-#HD{background:var(--sf);border-bottom:.5px solid var(--b);display:flex;align-items:center;padding:0 16px;padding-top:env(safe-area-inset-top,0);flex-shrink:0;min-height:56px;gap:8px}
-#CT{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:16px 16px calc(var(--th) + var(--sb) + 16px)}
-#TB{height:calc(var(--th) + var(--sb));padding-bottom:var(--sb);background:var(--sf);border-top:.5px solid var(--b);display:flex;position:fixed;bottom:0;left:0;right:0;z-index:10}
-.tb{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:none;border:none;cursor:pointer;color:var(--t3);font-size:9px;font-weight:500;padding:0;position:relative;font-family:inherit}
-.tb.on{color:var(--t)}.ti{font-size:20px;line-height:1}
-.bd{position:absolute;top:7px;right:calc(50% - 20px);width:7px;height:7px;background:var(--red);border-radius:50%;border:1.5px solid var(--sf)}
-#CB{position:fixed;bottom:calc(var(--th) + var(--sb));left:0;right:0;z-index:9;padding:10px 14px;background:var(--chg);display:none;align-items:center;gap:8px}
+
+/* ═══ HEADER ═══ */
+#HD{
+  background:var(--sf);
+  border-bottom:1px solid var(--b);
+  display:flex;align-items:center;
+  padding:0 20px;padding-top:env(safe-area-inset-top,0);
+  flex-shrink:0;min-height:60px;gap:10px;
+  box-shadow:var(--shadow-sm);
+  position:relative;z-index:5;
+}
+
+/* ═══ CONTENT ═══ */
+#CT{
+  flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding:20px 18px calc(var(--th) + var(--sb) + 20px);
+}
+
+/* ═══ TAB BAR ═══ */
+#TB{
+  height:calc(var(--th) + var(--sb));padding-bottom:var(--sb);
+  background:var(--sf);
+  border-top:1px solid var(--b);
+  display:flex;position:fixed;bottom:0;left:0;right:0;z-index:10;
+  box-shadow:0 -2px 12px rgba(45,42,38,0.05);
+}
+@media(prefers-color-scheme:dark){
+  #TB{box-shadow:0 -2px 12px rgba(0,0,0,0.2);}
+}
+.tb{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  background:none;border:none;cursor:pointer;
+  color:var(--t3);font-size:9px;font-weight:600;
+  padding:0;position:relative;font-family:inherit;
+  transition:color .2s ease, transform .15s ease;
+  letter-spacing:0.02em;
+}
+.tb:active{transform:scale(0.92)}
+.tb.on{color:var(--accent)}
+.ti{font-size:20px;line-height:1;transition:transform .2s ease}
+.tb.on .ti{transform:scale(1.1)}
+.bd{
+  position:absolute;top:6px;right:calc(50% - 20px);
+  width:8px;height:8px;background:var(--red);border-radius:50%;
+  border:2px solid var(--sf);
+  animation:fadeIn .3s ease;
+}
+
+/* ═══ CHANGE BANNER ═══ */
+#CB{
+  position:fixed;bottom:calc(var(--th) + var(--sb));left:0;right:0;z-index:9;
+  padding:12px 16px;background:var(--chg);display:none;align-items:center;gap:10px;
+  box-shadow:0 -4px 16px rgba(91,127,166,0.2);
+}
 #CB.on{display:flex}
-.cbtn{padding:9px 15px;border-radius:7px;border:none;cursor:pointer;font-size:13px;font-weight:700;font-family:inherit}
+.cbtn{
+  padding:10px 16px;border-radius:8px;border:none;cursor:pointer;
+  font-size:13px;font-weight:700;font-family:inherit;
+  transition:transform .12s ease, opacity .12s ease;
+}
+.cbtn:active{transform:scale(0.95)}
 .c-ok{background:#fff;color:var(--chg)}.c-no{background:rgba(255,255,255,0.2);color:#fff}
-.card{background:var(--sf);border-radius:var(--r);border:.5px solid var(--b);overflow:hidden;margin-bottom:12px}
-.sec{font-size:11px;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.07em;margin:18px 0 8px 2px}
-.row{display:flex;align-items:center;padding:12px 14px;border-bottom:.5px solid var(--b);gap:10px}
+
+/* ═══ CARDS ═══ */
+.card{
+  background:var(--sf);border-radius:var(--r);
+  border:1px solid var(--b);
+  overflow:hidden;margin-bottom:14px;
+  box-shadow:var(--shadow-sm);
+  transition:box-shadow .2s ease;
+}
+
+/* ═══ SECTION LABEL ═══ */
+.sec{
+  font-size:11px;font-weight:800;color:var(--accent);
+  text-transform:uppercase;letter-spacing:.1em;
+  margin:22px 0 10px 4px;
+  font-family:'Plus Jakarta Sans','Noto Sans KR',sans-serif;
+}
+
+/* ═══ ROWS ═══ */
+.row{display:flex;align-items:center;padding:14px 16px;border-bottom:1px solid var(--b);gap:12px}
 .row:last-child{border-bottom:none}
-.rp{cursor:pointer;transition:background .12s}.rp:active{background:var(--sf2)}
-.mets{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
-.met{background:var(--sf);border-radius:var(--r);padding:13px 15px;border:.5px solid var(--b)}
-.ml{font-size:10px;color:var(--t2);margin-bottom:5px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
-.mv{font-size:24px;font-weight:700;line-height:1}
+.rp{cursor:pointer;transition:background .15s ease}.rp:active{background:var(--sf2)}
+
+/* ═══ METRICS CARDS ═══ */
+.mets{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.met{
+  background:var(--sf);border-radius:var(--r);
+  padding:16px 18px;
+  border:1px solid var(--b);
+  box-shadow:var(--shadow-sm);
+  transition:transform .15s ease, box-shadow .15s ease;
+  position:relative;overflow:hidden;
+}
+.met::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--accent),transparent);
+  opacity:0.4;
+}
+.ml{
+  font-size:10px;color:var(--t2);margin-bottom:7px;
+  font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  font-family:'Plus Jakarta Sans','Noto Sans KR',sans-serif;
+}
+.mv{font-size:24px;font-weight:800;line-height:1}
 .mv.red{color:var(--red)}.mv.org{color:var(--org)}
-.irow{display:flex;align-items:center;padding:11px 14px;border-bottom:.5px solid var(--b);gap:9px;transition:background .15s}
-.irow:last-child{border-bottom:none}.irow.chg{background:var(--chg-bg)}
-.dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+/* ═══ ITEM ROWS ═══ */
+.irow{
+  display:flex;align-items:center;
+  padding:13px 16px;border-bottom:1px solid var(--b);gap:10px;
+  transition:background .2s ease;
+}
+.irow:last-child{border-bottom:none}
+.irow.chg{background:var(--chg-bg)}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;transition:background .2s ease}
 .dot.ok{background:var(--grn)}.dot.wr{background:var(--org)}.dot.ng{background:var(--red)}
 .ii{flex:1;min-width:0}
-.in{font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.is{font-size:10px;color:var(--t3);margin-top:2px}
-.pg{height:2px;background:var(--b2);border-radius:2px;margin-top:4px;overflow:hidden}
-.pf{height:100%;border-radius:2px}
-.sp{display:flex;align-items:center;flex-shrink:0}
-.sb{width:32px;height:32px;border-radius:50%;border:.5px solid;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:inherit;-webkit-user-select:none;user-select:none}
-.sb:active{opacity:.6}.sb.m{color:var(--minus);border-color:var(--minus);background:var(--minus-bg)}
+.in{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.is{font-size:10px;color:var(--t3);margin-top:3px;line-height:1.4}
+
+/* ═══ PROGRESS BAR ═══ */
+.pg{height:3px;background:var(--b);border-radius:3px;margin-top:6px;overflow:hidden}
+.pf{height:100%;border-radius:3px;transition:width .4s ease}
+
+/* ═══ STEPPER ═══ */
+.sp{display:flex;align-items:center;flex-shrink:0;gap:2px}
+.sb{
+  width:34px;height:34px;border-radius:50%;border:1.5px solid;
+  font-size:17px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-family:inherit;-webkit-user-select:none;user-select:none;
+  transition:transform .1s ease, opacity .1s ease, box-shadow .15s ease;
+}
+.sb:active{transform:scale(0.88);opacity:.7}
+.sb.m{color:var(--minus);border-color:var(--minus);background:var(--minus-bg)}
 .sb.p{color:var(--plus);border-color:var(--plus);background:var(--plus-bg)}
-.sv{min-width:46px;text-align:center;font-size:15px;font-weight:700;cursor:pointer;padding:0 3px}
+.sb.m:active{box-shadow:0 0 0 3px rgba(196,83,58,0.15)}
+.sb.p:active{box-shadow:0 0 0 3px rgba(58,125,92,0.15)}
+.sv{min-width:48px;text-align:center;font-size:16px;font-weight:800;cursor:pointer;padding:0 4px}
 .sv.chg{color:var(--chg)}.sv.lo{color:var(--red)}
-.sd{font-size:9px;font-weight:700;text-align:center;height:11px}
+.sd{font-size:9px;font-weight:700;text-align:center;height:12px}
 .sd.p{color:var(--plus)}.sd.m{color:var(--minus)}
-.su{font-size:9px;color:var(--t3);text-align:center}
-.chip{display:inline-flex;align-items:center;padding:2px 7px;border-radius:20px;font-size:10px;font-weight:700}
+.su{font-size:9px;color:var(--t3);text-align:center;font-weight:500}
+
+/* ═══ CHIPS ═══ */
+.chip{
+  display:inline-flex;align-items:center;
+  padding:2px 8px;border-radius:20px;
+  font-size:10px;font-weight:700;
+  letter-spacing:0.01em;
+}
 .chip.ord{background:var(--red-bg);color:var(--red)}
 .chip.mak{background:var(--org-bg);color:var(--org)}
 .chip.ok{background:var(--grn-bg);color:var(--grn)}
-.al{border-radius:var(--rs);padding:12px 13px;margin-bottom:10px;border:.5px solid}
-.al.ng{background:var(--red-bg);border-color:var(--red)}
-.al.wr{background:var(--org-bg);border-color:var(--org)}
-.al.ok{background:var(--grn-bg);border-color:var(--grn)}
-.al.inf{background:var(--blu-bg);border-color:var(--blu)}
-.at{font-size:13px;font-weight:600;margin-bottom:3px}
+
+/* ═══ ALERTS ═══ */
+.al{
+  border-radius:var(--rs);padding:14px 15px;margin-bottom:12px;
+  border:1px solid;
+  box-shadow:var(--shadow-sm);
+}
+.al.ng{background:var(--red-bg);border-color:rgba(196,83,58,0.2)}
+.al.wr{background:var(--org-bg);border-color:rgba(212,136,58,0.2)}
+.al.ok{background:var(--grn-bg);border-color:rgba(58,125,92,0.2)}
+.al.inf{background:var(--blu-bg);border-color:rgba(91,127,166,0.2)}
+.at{font-size:13px;font-weight:700;margin-bottom:4px}
 .al.ng .at{color:var(--red)}.al.wr .at{color:var(--org)}.al.ok .at{color:var(--grn)}.al.inf .at{color:var(--blu)}
-.ab{font-size:12px;color:var(--t2);line-height:1.5}
-.fg{margin-bottom:13px}.fg:last-child{margin-bottom:0}
-.fl{font-size:11px;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px;display:block}
-.fi{width:100%;background:var(--sf2);border:.5px solid var(--b2);border-radius:var(--rs);padding:10px 12px;font-size:15px;color:var(--t);font-family:inherit;outline:none;appearance:none}
-.fi:focus{border-color:var(--t2)}.g2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px}
-.btn{padding:12px 18px;border-radius:var(--rs);font-size:15px;font-weight:600;cursor:pointer;border:none;font-family:inherit}
-.btn:active{opacity:.75}
-.bp{background:var(--ac);color:var(--bg);width:100%}
-.bs{background:var(--grn);color:#fff;width:100%}
-.bd2{background:var(--red-bg);color:var(--red);border:.5px solid var(--red)}
-.bi{background:var(--blu-bg);color:var(--blu);border:.5px solid var(--blu);width:100%}
-.bg{background:var(--sf2);color:var(--t2);border:.5px solid var(--b2)}
-.bsm{padding:7px 13px;font-size:13px;border-radius:7px}
-.ov{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:100;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
+.ab{font-size:12px;color:var(--t2);line-height:1.6}
+
+/* ═══ FORM ═══ */
+.fg{margin-bottom:14px}.fg:last-child{margin-bottom:0}
+.fl{
+  font-size:11px;font-weight:700;color:var(--t2);
+  text-transform:uppercase;letter-spacing:.06em;
+  margin-bottom:6px;display:block;
+  font-family:'Plus Jakarta Sans','Noto Sans KR',sans-serif;
+}
+.fi{
+  width:100%;background:var(--sf2);
+  border:1.5px solid var(--b2);border-radius:var(--rs);
+  padding:11px 14px;font-size:15px;color:var(--t);
+  font-family:inherit;outline:none;appearance:none;
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+.fi:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-bg)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+
+/* ═══ BUTTONS ═══ */
+.btn{
+  padding:13px 20px;border-radius:var(--rs);
+  font-size:15px;font-weight:700;cursor:pointer;border:none;
+  font-family:inherit;
+  transition:transform .1s ease, opacity .1s ease, box-shadow .15s ease;
+}
+.btn:active{transform:scale(0.97);opacity:.85}
+.bp{background:var(--ac);color:var(--bg);width:100%;box-shadow:var(--shadow-sm)}
+.bs{background:var(--grn);color:#fff;width:100%;box-shadow:0 2px 8px rgba(58,125,92,0.25)}
+.bd2{background:var(--red-bg);color:var(--red);border:1.5px solid rgba(196,83,58,0.25)}
+.bi{background:var(--blu-bg);color:var(--blu);border:1.5px solid rgba(91,127,166,0.25);width:100%}
+.bg{background:var(--sf2);color:var(--t2);border:1.5px solid var(--b2)}
+.bsm{padding:8px 14px;font-size:13px;border-radius:8px}
+
+/* ═══ OVERLAYS / MODALS ═══ */
+.ov{
+  position:fixed;inset:0;
+  background:rgba(26,24,22,0.5);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  z-index:100;display:flex;align-items:flex-end;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .25s ease;
+}
+@media(prefers-color-scheme:dark){
+  .ov{background:rgba(0,0,0,0.6);}
+}
 .ov.on{opacity:1;pointer-events:all}
-.mo{background:var(--sf);border-radius:20px 20px 0 0;padding:20px 18px calc(20px + var(--sb));width:100%;max-height:92vh;overflow-y:auto;transform:translateY(40px);transition:transform .25s}
+.mo{
+  background:var(--sf);
+  border-radius:22px 22px 0 0;
+  padding:22px 20px calc(22px + var(--sb));
+  width:100%;max-height:92vh;overflow-y:auto;
+  transform:translateY(100%);
+  transition:transform .35s cubic-bezier(0.32,0.72,0,1);
+  box-shadow:var(--shadow-lg);
+}
 .ov.on .mo{transform:translateY(0)}
-.mh{width:36px;height:4px;background:var(--b2);border-radius:2px;margin:0 auto 16px}
-.mt{font-size:17px;font-weight:700;margin-bottom:16px}
-.np{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:12px}
-.nk{padding:13px;border-radius:10px;border:.5px solid var(--b2);background:var(--sf2);font-size:18px;font-weight:500;cursor:pointer;color:var(--t);font-family:inherit}
-.nk:active{opacity:.6}
-.vl{background:var(--sf);border-radius:var(--r);border:.5px solid var(--b);overflow:hidden}
-.vr{display:flex;justify-content:space-between;align-items:center;padding:11px 15px;border-bottom:.5px solid var(--b);font-size:13px}
-.vr:last-child{border-bottom:none}.vr.tot{font-weight:700;font-size:15px;background:var(--sf2)}
+.mh{width:40px;height:4px;background:var(--b2);border-radius:2px;margin:0 auto 18px}
+.mt{font-size:18px;font-weight:800;margin-bottom:18px}
+
+/* ═══ NUMBER PAD ═══ */
+.np{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.nk{
+  padding:15px;border-radius:12px;
+  border:1.5px solid var(--b2);background:var(--sf2);
+  font-size:18px;font-weight:600;cursor:pointer;
+  color:var(--t);font-family:inherit;
+  transition:transform .08s ease, background .1s ease, box-shadow .1s ease;
+}
+.nk:active{
+  transform:scale(0.93);
+  background:var(--b2);
+  box-shadow:inset 0 1px 4px rgba(45,42,38,0.1);
+}
+
+/* ═══ VALUE LIST ═══ */
+.vl{background:var(--sf);border-radius:var(--r);border:1px solid var(--b);overflow:hidden;box-shadow:var(--shadow-sm)}
+.vr{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid var(--b);font-size:13px}
+.vr:last-child{border-bottom:none}
+.vr.tot{font-weight:800;font-size:15px;background:var(--sf2)}
 .vl2{color:var(--t2)}
+
+/* ═══ LEDGER TABLE ═══ */
 .ltb{width:100%;font-size:12px;border-collapse:collapse}
-.ltb th{padding:8px;background:var(--sf2);color:var(--t2);font-weight:600;text-align:right;border-bottom:.5px solid var(--b)}
+.ltb th{
+  padding:10px 8px;background:var(--sf2);color:var(--t2);
+  font-weight:700;text-align:right;
+  border-bottom:1px solid var(--b);
+  font-size:10px;text-transform:uppercase;letter-spacing:.04em;
+}
 .ltb th:first-child{text-align:left}
-.ltb td{padding:9px 8px;border-bottom:.5px solid var(--b);text-align:right;vertical-align:middle}
-.ltb td:first-child{text-align:left;font-weight:500}
+.ltb td{padding:11px 8px;border-bottom:1px solid var(--b);text-align:right;vertical-align:middle}
+.ltb td:first-child{text-align:left;font-weight:600}
 .ltb tr:last-child td{border-bottom:none}
-.ltb .lp{color:var(--plus);font-weight:600}.ltb .lm{color:var(--minus);font-weight:600}
+.ltb tr:hover td{background:var(--sf2)}
+.ltb .lp{color:var(--plus);font-weight:700}.ltb .lm{color:var(--minus);font-weight:700}
 .ltb .lo{color:var(--grn)}.ltb .lr{color:var(--red)}
-.stb{display:flex;background:var(--sf2);border-radius:10px;padding:3px;margin-bottom:16px}
-.st{flex:1;padding:8px;border-radius:8px;border:none;background:none;font-size:13px;font-weight:600;cursor:pointer;color:var(--t3);font-family:inherit}
-.st.on{background:var(--sf);color:var(--t)}
-.sp2{width:24px;height:24px;border:2.5px solid var(--b2);border-top-color:var(--t);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto}
+
+/* ═══ SUB-TAB BAR ═══ */
+.stb{
+  display:flex;background:var(--sf2);
+  border-radius:12px;padding:4px;margin-bottom:18px;
+  border:1px solid var(--b);
+}
+.st{
+  flex:1;padding:9px;border-radius:9px;border:none;background:none;
+  font-size:13px;font-weight:700;cursor:pointer;
+  color:var(--t3);font-family:inherit;
+  transition:all .2s ease;
+}
+.st.on{
+  background:var(--sf);color:var(--t);
+  box-shadow:var(--shadow-sm);
+}
+
+/* ═══ SPINNER ═══ */
+.sp2{
+  width:24px;height:24px;
+  border:2.5px solid var(--b2);border-top-color:var(--accent);
+  border-radius:50%;animation:spin .7s linear infinite;margin:0 auto;
+}
 @keyframes spin{to{transform:rotate(360deg)}}
-.fcard{background:var(--sf);border-radius:var(--r);border:.5px solid var(--b);padding:16px;margin-bottom:12px}
+
+/* ═══ FORM CARD ═══ */
+.fcard{
+  background:var(--sf);border-radius:var(--r);
+  border:1px solid var(--b);padding:18px;margin-bottom:14px;
+  box-shadow:var(--shadow-sm);
+}
 .ir{display:flex;align-items:center;gap:8px;margin-bottom:8px}
 </style>
 </head>
 <body>
 <div id="W">
   <div id="HD">
-    <div style="flex:1"><div id="HT" style="font-size:17px;font-weight:600">재고 현황</div></div>
+    <div style="flex:1"><div id="HT" style="font-size:18px;font-weight:800;letter-spacing:-0.02em">재고 현황</div></div>
     <button class="btn bg bsm" id="HA" style="display:none" onclick="hdrAct()"></button>
   </div>
   <div id="CT"></div>
@@ -295,74 +560,76 @@ html,body{height:100%;background:var(--bg);font-family:-apple-system,'Apple SD G
 
 <script>
 'use strict';
-var SK='iv4',RK='rv4',PK='pv4',CK='cl4';
+var SK='iv4',RK='rv4',PK='pv4',CK='cl4',UK='usage_v1';
 var FB_CFG_KEY='fb_config_v1';
+var AUTO_MIN_KEY='auto_min_v1';
 var DEF=[
   // ════════════════════════════════════════
   // 재고 (매일 파악) track:'재고'
   // ════════════════════════════════════════
 
   // ── 육류 ─────────────────────────────────
-  {id:11,name:'양념돼지갈비',cat:'육류',track:'재고',type:'반제품',qty:0,min:10,unit:'kg',price:0,recipe:{yields:1,ings:[{id:201,amt:1}]}},
-  {id:12,name:'양념목살',cat:'육류',track:'재고',type:'반제품',qty:0,min:5,unit:'kg',price:0,recipe:{yields:1,ings:[{id:202,amt:1}]}},
-  {id:13,name:'양념눈꽃살',cat:'육류',track:'재고',type:'반제품',qty:0,min:4,unit:'kg',price:0,recipe:{yields:1,ings:[{id:204,amt:1}]}},
-  {id:14,name:'양념뽈살',cat:'육류',track:'재고',type:'반제품',qty:0,min:3,unit:'kg',price:0,recipe:{yields:1,ings:[{id:203,amt:1}]}},
-  {id:15,name:'양념꼬들살',cat:'육류',track:'재고',type:'반제품',qty:0,min:3,unit:'kg',price:0,recipe:{yields:1,ings:[{id:205,amt:1}]}},
-  {id:16,name:'양념껍데기',cat:'육류',track:'재고',type:'반제품',qty:0,min:3,unit:'팩',price:0,recipe:{yields:1,ings:[{id:208,amt:1}]}},
+  {id:11,name:'양념돼지갈비',cat:'육류',track:'재고',type:'반제품',qty:0,min:3,unit:'통',price:0,recipe:{yields:1,ings:[{id:201,amt:3.5}]}},
+  {id:12,name:'양념목살',cat:'육류',track:'재고',type:'반제품',qty:0,min:2,unit:'통',price:0,recipe:{yields:1,ings:[{id:202,amt:3.5}]}},
+  {id:13,name:'양념눈꽃살',cat:'육류',track:'재고',type:'반제품',qty:0,min:2,unit:'통',price:0,recipe:{yields:1,ings:[{id:204,amt:2}]}},
+  {id:14,name:'양념뽈살',cat:'육류',track:'재고',type:'반제품',qty:0,min:2,unit:'통',price:0,recipe:{yields:1,ings:[{id:203,amt:2}]}},
+  {id:15,name:'양념꼬들살',cat:'육류',track:'재고',type:'반제품',qty:0,min:2,unit:'통',price:0,recipe:{yields:1,ings:[{id:205,amt:2}]}},
+  {id:16,name:'양념껍데기',cat:'육류',track:'재고',type:'반제품',qty:0,min:3,unit:'통',price:0,recipe:{yields:1,ings:[{id:208,amt:1}]}},
   {id:17,name:'육회',cat:'육류',track:'재고',type:'식재료',qty:0,min:2,unit:'kg',price:0},
   {id:18,name:'갈비소스',cat:'육류',track:'재고',type:'반제품',qty:0,min:1,unit:'통',price:0,recipe:{yields:1,ings:[{id:301,amt:5},{id:302,amt:0.2},{id:303,amt:0.5},{id:304,amt:2},{id:305,amt:2},{id:306,amt:5},{id:307,amt:20},{id:308,amt:1.8},{id:309,amt:5},{id:310,amt:2},{id:311,amt:2},{id:312,amt:2},{id:313,amt:2}]}},
   {id:19,name:'파인애플',cat:'육류',track:'재고',type:'식재료',qty:0,min:1,unit:'개',price:0},
+  {id:20,name:'삼겹살',cat:'육류',track:'재고',type:'식재료',qty:0,min:2,unit:'통',price:0},
 
   // ── 가니쉬 ───────────────────────────────
-  {id:21,name:'쪽파',cat:'가니쉬',track:'재고',type:'식재료',qty:0,min:1,unit:'단',price:0},
-  {id:22,name:'버섯',cat:'가니쉬',track:'재고',type:'식재료',qty:0,min:1,unit:'박스',price:0},
-  {id:23,name:'돌자반',cat:'가니쉬',track:'재고',type:'식재료',qty:0,min:1,unit:'봉',price:0},
-  {id:24,name:'순두부',cat:'가니쉬',track:'재고',type:'식재료',qty:0,min:3,unit:'박스',price:0},
-  {id:25,name:'메추리알',cat:'가니쉬',track:'재고',type:'식재료',qty:0,min:1,unit:'팩',price:0},
-  {id:26,name:'쌈무',cat:'가니쉬',track:'재고',type:'식재료',qty:0,min:1,unit:'박스',price:0},
-  {id:27,name:'육전',cat:'가니쉬',track:'재고',type:'식재료',qty:0,min:1,unit:'팩',price:0},
+  {id:21,name:'쪽파',cat:'가니쉬',track:'재고',type:'식재료',qty:0,min:1,unit:'통',price:0},
+  {id:22,name:'버섯',cat:'가니쉬',track:'재고',type:'식재료',qty:0,min:1,unit:'통',price:0},
+  {id:23,name:'돌자반',cat:'가니쉬',track:'재고',type:'식재료',qty:0,min:1,unit:'통',price:0},
+  {id:24,name:'두부',cat:'가니쉬',track:'재고',type:'식재료',qty:0,min:3,unit:'통',price:0},
+  {id:25,name:'메추리알',cat:'가니쉬',track:'재고',type:'식재료',qty:0,min:1,unit:'통',price:0},
+  {id:26,name:'쌈무',cat:'가니쉬',track:'재고',type:'식재료',qty:0,min:1,unit:'통',price:0},
+  {id:27,name:'육전',cat:'가니쉬',track:'재고',type:'식재료',qty:0,min:1,unit:'통',price:0},
 
   // ── 사이드 ───────────────────────────────
   {id:31,name:'계란찜',cat:'사이드',track:'재고',type:'반제품',qty:0,min:3,unit:'개',price:0,recipe:{yields:3,ings:[{id:320,amt:6},{id:321,amt:0.05},{id:322,amt:0.05},{id:323,amt:0.1}]}},
-  {id:32,name:'막국수소스',cat:'사이드',track:'재고',type:'반제품',qty:0,min:1,unit:'통',price:0,recipe:{yields:1,ings:[]}},
-  {id:33,name:'냉면소스',cat:'사이드',track:'재고',type:'반제품',qty:0,min:2,unit:'통',price:0,recipe:{yields:1,ings:[{id:330,amt:0.3},{id:331,amt:0.1},{id:321,amt:0.1},{id:307,amt:0.1},{id:332,amt:0.1},{id:322,amt:0.2},{id:333,amt:0.2},{id:334,amt:0.2},{id:335,amt:0.5},{id:336,amt:0.3}]}},
-  {id:34,name:'막국수면',cat:'사이드',track:'재고',type:'식재료',qty:0,min:3,unit:'박스',price:0},
-  {id:35,name:'냉면면',cat:'사이드',track:'재고',type:'식재료',qty:0,min:1,unit:'박스',price:0},
-  {id:36,name:'된장찌개',cat:'사이드',track:'재고',type:'반제품',qty:0,min:1,unit:'솥',price:0,recipe:{yields:1,ings:[{id:335,amt:0.3},{id:337,amt:2},{id:338,amt:2},{id:339,amt:0.3},{id:340,amt:0.2}]}},
-  {id:37,name:'냉면육수',cat:'사이드',track:'재고',type:'반제품',qty:0,min:1,unit:'통',price:0,recipe:{yields:1,ings:[]}},
-  {id:38,name:'콩나물육수',cat:'사이드',track:'재고',type:'반제품',qty:0,min:1,unit:'통',price:0,recipe:{yields:1,ings:[{id:350,amt:1},{id:351,amt:1},{id:322,amt:0.2},{id:352,amt:0.1},{id:323,amt:0.1},{id:353,amt:0.1}]}},
-  {id:39,name:'콩나물',cat:'사이드',track:'재고',type:'식재료',qty:0,min:1,unit:'박스',price:0},
-  {id:40,name:'파',cat:'사이드',track:'재고',type:'식재료',qty:0,min:5,unit:'단',price:0},
+  {id:32,name:'막국수소스',cat:'사이드',track:'재고',type:'반제품',qty:0,min:1,unit:'개',price:0,recipe:{yields:1,ings:[]}},
+  {id:33,name:'냉면소스',cat:'사이드',track:'재고',type:'반제품',qty:0,min:2,unit:'개',price:0,recipe:{yields:1,ings:[{id:330,amt:0.3},{id:331,amt:0.1},{id:321,amt:0.1},{id:307,amt:0.1},{id:332,amt:0.1},{id:322,amt:0.2},{id:333,amt:0.2},{id:334,amt:0.2},{id:335,amt:0.5},{id:336,amt:0.3}]}},
+  {id:34,name:'막국수면',cat:'사이드',track:'재고',type:'식재료',qty:0,min:3,unit:'개',price:0},
+  {id:35,name:'냉면면',cat:'사이드',track:'재고',type:'식재료',qty:0,min:1,unit:'개',price:0},
+  {id:36,name:'된장찌개',cat:'사이드',track:'재고',type:'반제품',qty:0,min:1,unit:'개',price:0,recipe:{yields:1,ings:[{id:335,amt:0.3},{id:337,amt:2},{id:338,amt:2},{id:339,amt:0.3},{id:340,amt:0.2}]}},
+  {id:37,name:'냉면육수',cat:'사이드',track:'재고',type:'반제품',qty:0,min:1,unit:'개',price:0,recipe:{yields:1,ings:[]}},
+  {id:38,name:'콩나물육수',cat:'사이드',track:'재고',type:'반제품',qty:0,min:1,unit:'개',price:0,recipe:{yields:1,ings:[{id:350,amt:1},{id:351,amt:1},{id:322,amt:0.2},{id:352,amt:0.1},{id:323,amt:0.1},{id:353,amt:0.1}]}},
+  {id:39,name:'콩나물',cat:'사이드',track:'재고',type:'식재료',qty:0,min:1,unit:'개',price:0},
+  {id:40,name:'파',cat:'사이드',track:'재고',type:'식재료',qty:0,min:5,unit:'개',price:0},
 
   // ── 반찬 ─────────────────────────────────
   {id:51,name:'명이나물',cat:'반찬',track:'재고',type:'식재료',qty:0,min:1,unit:'통',price:0},
   {id:52,name:'고추채장아찌',cat:'반찬',track:'재고',type:'식재료',qty:0,min:1,unit:'통',price:0},
   {id:53,name:'궁채',cat:'반찬',track:'재고',type:'식재료',qty:0,min:1,unit:'통',price:0},
-  {id:54,name:'콜라비쌈무',cat:'반찬',track:'재고',type:'반제품',qty:0,min:1,unit:'통',price:0,recipe:{yields:1,ings:[{id:360,amt:1},{id:333,amt:1}]}},
+  {id:54,name:'무생채',cat:'반찬',track:'재고',type:'식재료',qty:0,min:1,unit:'통',price:0},
   {id:55,name:'파절이',cat:'반찬',track:'재고',type:'반제품',qty:0,min:1,unit:'통',price:0,recipe:{yields:1,ings:[{id:361,amt:1},{id:40,amt:1}]}},
   {id:56,name:'파절이소스',cat:'반찬',track:'재고',type:'반제품',qty:0,min:1,unit:'통',price:0,recipe:{yields:1,ings:[]}},
-  {id:57,name:'상추',cat:'반찬',track:'재고',type:'식재료',qty:0,min:1,unit:'박스',price:0},
-  {id:58,name:'고추',cat:'반찬',track:'재고',type:'식재료',qty:0,min:3,unit:'kg',price:0},
-  {id:59,name:'마늘',cat:'반찬',track:'재고',type:'식재료',qty:0,min:2,unit:'kg',price:0},
+  {id:57,name:'상추',cat:'반찬',track:'재고',type:'식재료',qty:0,min:1,unit:'통',price:0},
+  {id:58,name:'고추',cat:'반찬',track:'재고',type:'식재료',qty:0,min:3,unit:'통',price:0},
+  {id:59,name:'마늘',cat:'반찬',track:'재고',type:'식재료',qty:0,min:2,unit:'통',price:0},
   {id:60,name:'유자소스',cat:'반찬',track:'재고',type:'반제품',qty:0,min:2,unit:'통',price:0,recipe:{yields:1,ings:[{id:370,amt:0.5},{id:371,amt:0.5},{id:372,amt:0.05},{id:373,amt:0.5}]}},
-  {id:61,name:'쌈장',cat:'반찬',track:'재고',type:'식재료',qty:0,min:1,unit:'캔',price:0},
+  {id:61,name:'쌈장',cat:'반찬',track:'재고',type:'식재료',qty:0,min:1,unit:'통',price:0},
 
   // ── 주류 ─────────────────────────────────
   {id:71,name:'참이슬',cat:'주류',track:'재고',type:'식재료',qty:0,min:2,unit:'짝',price:0},
   {id:72,name:'처음처럼',cat:'주류',track:'재고',type:'식재료',qty:0,min:1,unit:'짝',price:0},
   {id:73,name:'진로',cat:'주류',track:'재고',type:'식재료',qty:0,min:1,unit:'짝',price:0},
   {id:74,name:'새로',cat:'주류',track:'재고',type:'식재료',qty:0,min:1,unit:'짝',price:0},
-  {id:75,name:'청하',cat:'주류',track:'재고',type:'식재료',qty:0,min:5,unit:'병',price:0},
-  {id:76,name:'화요',cat:'주류',track:'재고',type:'식재료',qty:0,min:2,unit:'병',price:0},
+  {id:75,name:'청하',cat:'주류',track:'재고',type:'식재료',qty:0,min:5,unit:'짝',price:0},
+  {id:76,name:'화요',cat:'주류',track:'재고',type:'식재료',qty:0,min:2,unit:'짝',price:0},
   {id:77,name:'카스',cat:'주류',track:'재고',type:'식재료',qty:0,min:1,unit:'짝',price:0},
   {id:78,name:'켈리',cat:'주류',track:'재고',type:'식재료',qty:0,min:1,unit:'짝',price:0},
-  {id:79,name:'생맥주',cat:'주류',track:'재고',type:'식재료',qty:0,min:1,unit:'통',price:0},
+  {id:79,name:'생맥주',cat:'주류',track:'재고',type:'식재료',qty:0,min:1,unit:'짝',price:0},
 
   // ── 음료 ─────────────────────────────────
-  {id:81,name:'트레비',cat:'음료',track:'재고',type:'식재료',qty:0,min:5,unit:'개',price:0},
-  {id:82,name:'코카콜라',cat:'음료',track:'재고',type:'식재료',qty:0,min:30,unit:'캔',price:0},
-  {id:83,name:'제로콜라',cat:'음료',track:'재고',type:'식재료',qty:0,min:30,unit:'캔',price:0},
-  {id:84,name:'사이다',cat:'음료',track:'재고',type:'식재료',qty:0,min:30,unit:'캔',price:0},
+  {id:81,name:'트레비',cat:'음료',track:'재고',type:'식재료',qty:0,min:5,unit:'짝',price:0},
+  {id:82,name:'코카콜라',cat:'음료',track:'재고',type:'식재료',qty:0,min:1,unit:'짝',price:0},
+  {id:83,name:'제로콜라',cat:'음료',track:'재고',type:'식재료',qty:0,min:1,unit:'짝',price:0},
+  {id:84,name:'사이다',cat:'음료',track:'재고',type:'식재료',qty:0,min:1,unit:'짝',price:0},
 
   // ════════════════════════════════════════
   // 재료 (입고/생산 자동 트랙킹) track:'재료'
@@ -445,8 +712,13 @@ var DEF=[
   {id:407,name:'석쇠',cat:'홀비품',track:'재료',type:'식재료',qty:0,min:1,unit:'박스',price:0},
   {id:408,name:'치실',cat:'홀비품',track:'재료',type:'식재료',qty:0,min:1,unit:'봉',price:0},
   {id:409,name:'부탄가스',cat:'홀비품',track:'재료',type:'식재료',qty:0,min:10,unit:'개',price:0},
+
+  // ── 기타 ─────────────────────────────────
+  {id:501,name:'숯',cat:'기타',track:'재고',type:'식재료',qty:0,min:5,unit:'박스',price:0},
+  {id:502,name:'석쇠',cat:'기타',track:'재고',type:'식재료',qty:0,min:10,unit:'개',price:0},
 ];
-var items=[],recvs=[],prods=[],closes=[];
+var items=[],recvs=[],prods=[],closes=[],usageData=[];
+var autoMinCfg={enabled:false,factor:2};
 var nextId=100,tab='inv',stab='items';
 var pend={};
 var dmId=null,dmStr='0',dmVal=0;
@@ -509,6 +781,10 @@ function startListeners(){
     var d=snap.data();if(d.list)closes=d.list;
     if(!isSaving)render();
   }));
+  fbListeners.push(col.doc('usage').onSnapshot(function(snap){
+    if(!snap.exists)return;
+    var d=snap.data();if(d.list)usageData=d.list;
+  }));
 }
 
 function showToast(msg,color){
@@ -551,6 +827,7 @@ function ld(){
       recvs=JSON.parse(localStorage.getItem(RK)||'[]');
       prods=JSON.parse(localStorage.getItem(PK)||'[]');
       closes=JSON.parse(localStorage.getItem(CK)||'[]');
+      usageData=JSON.parse(localStorage.getItem(UK)||'[]');
     }catch(e){items=JSON.parse(JSON.stringify(DEF));}
     initFirebase(cfg);
   } else {
@@ -562,8 +839,10 @@ function ld(){
       recvs=JSON.parse(localStorage.getItem(RK)||'[]');
       prods=JSON.parse(localStorage.getItem(PK)||'[]');
       closes=JSON.parse(localStorage.getItem(CK)||'[]');
-    }catch(e){items=JSON.parse(JSON.stringify(DEF));recvs=[];prods=[];closes=[];}
+      usageData=JSON.parse(localStorage.getItem(UK)||'[]');
+    }catch(e){items=JSON.parse(JSON.stringify(DEF));recvs=[];prods=[];closes=[];usageData=[];}
   }
+  try{var am=localStorage.getItem(AUTO_MIN_KEY);if(am)autoMinCfg=JSON.parse(am);}catch(e){}
 }
 
 function sv(){
@@ -572,6 +851,8 @@ function sv(){
   localStorage.setItem(RK,JSON.stringify(recvs));
   localStorage.setItem(PK,JSON.stringify(prods));
   localStorage.setItem(CK,JSON.stringify(closes));
+  localStorage.setItem(UK,JSON.stringify(usageData));
+  localStorage.setItem(AUTO_MIN_KEY,JSON.stringify(autoMinCfg));
 
   if(db){
     isSaving=true;
@@ -581,7 +862,8 @@ function sv(){
       col.doc('items').set({items:items,nextId:nextId,updatedAt:Date.now()}),
       col.doc('recvs').set({list:recvs,updatedAt:Date.now()}),
       col.doc('prods').set({list:prods,updatedAt:Date.now()}),
-      col.doc('closes').set({list:closes,updatedAt:Date.now()})
+      col.doc('closes').set({list:closes,updatedAt:Date.now()}),
+      col.doc('usage').set({list:usageData,updatedAt:Date.now()})
     ]).then(function(){
       isSaving=false;
       showSync('✓ 동기화 완료','var(--grn)');
@@ -632,7 +914,7 @@ function fq(n){return n%1===0?String(n):n.toFixed(1);}
 function fm(n){return n.toLocaleString('ko-KR')+'원';}
 function fd(iso){var d=new Date(iso);return (d.getMonth()+1)+'/'+(d.getDate())+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');}
 function td(){return new Date().toISOString().slice(0,10);}
-function isDec(u){return ['kg','L','l'].indexOf(u)>=0;}
+function isDec(u){return false;}
 function pq(item){return pend[item.id]!==undefined?pend[item.id].cur:item.qty;}
 function hasPend(){return Object.keys(pend).length>0;}
 function st(item,q){if(q===undefined)q=pq(item);var r=q/item.min;if(q<=0)return'ng';if(r<0.5)return'ng';if(r<1)return'wr';return'ok';}
@@ -729,7 +1011,7 @@ function rInv(el){
         +'<div class="dot '+s+'"></div>'
         +'<div class="ii">'
           +'<div class="in">'+item.name+'</div>'
-          +'<div class="is">'+chip+'&nbsp;기준 '+item.min+item.unit+cost+'</div>'
+          +'<div class="is">'+chip+'&nbsp;기준 '+item.min+item.unit+(item.autoMin?' <span style="font-size:9px;background:var(--blu-bg);color:var(--blu);padding:1px 4px;border-radius:4px;font-weight:700">자동</span>':'')+cost+'</div>'
           +'<div class="pg"><div class="pf" style="width:'+(ratio*100).toFixed(0)+'%;background:'+fc+'"></div></div>'
         +'</div>';
 
@@ -815,7 +1097,7 @@ function updRow(item){
   var chip=item.type==='반제품'&&q<item.min?'<span class="chip mak">생산필요</span>':item.type==='식재료'&&q<item.min?'<span class="chip ord">발주필요</span>':'<span class="chip ok">정상</span>';
   row.className='irow'+(pp?' chg':'');
   row.querySelector('.dot').className='dot '+s;
-  row.querySelector('.is').innerHTML=chip+'&nbsp;기준 '+item.min+item.unit;
+  row.querySelector('.is').innerHTML=chip+'&nbsp;기준 '+item.min+item.unit+(item.autoMin?' <span style="font-size:9px;background:var(--blu-bg);color:var(--blu);padding:1px 4px;border-radius:4px;font-weight:700">자동</span>':'');
   row.querySelector('.pf').style.width=(ratio*100).toFixed(0)+'%';
   row.querySelector('.pf').style.background=fc;
   var sv=row.querySelector('[class^="sv"],.sv');
@@ -826,6 +1108,119 @@ function updRow(item){
   if(sd){sd.textContent=d>0?'+'+fq(d):d<0?fq(d):'';sd.className='sd '+(d>0?'p':d<0?'m':'');}
 }
 
+// ── USAGE CALCULATION & AUTO MIN ─────────────────────
+function calcUsage(){
+  // Calculate daily usage for each item based on close data
+  var today=td();
+  // Find the previous close (most recent close before this one)
+  var prevClose=null;
+  for(var i=0;i<closes.length;i++){
+    var cd=new Date(closes[i].time).toISOString().slice(0,10);
+    if(cd<today){prevClose=closes[i];break;}
+  }
+  if(!prevClose)return null; // First day — no previous close, can't calc usage
+
+  var prevDate=new Date(prevClose.time).toISOString().slice(0,10);
+  // Build map of previous close quantities
+  var prevQty={};
+  prevClose.changes.forEach(function(c){prevQty[c.itemId]=c.aft;});
+
+  // Received since last close
+  var recvSince={};
+  recvs.forEach(function(r){
+    var rd=new Date(r.time).toISOString().slice(0,10);
+    if(rd>prevDate&&rd<=today){
+      r.lines.forEach(function(l){recvSince[l.id]=(recvSince[l.id]||0)+l.qty;});
+    }
+  });
+
+  // Produced since last close
+  var prodSince={};
+  var prodUsed={};
+  prods.forEach(function(p){
+    var pd=new Date(p.time).toISOString().slice(0,10);
+    if(pd>prevDate&&pd<=today){
+      prodSince[p.outId]=(prodSince[p.outId]||0)+p.outQty;
+      if(p.inputs)p.inputs.forEach(function(inp){prodUsed[inp.id]=(prodUsed[inp.id]||0)+inp.qty;});
+    }
+  });
+
+  var usageItems=[];
+  items.forEach(function(item){
+    var prev=prevQty[item.id];
+    if(prev===undefined)return; // Item wasn't in previous close — skip, no data to calculate from
+    var recv=recvSince[item.id]||0;
+    var prod=prodSince[item.id]||0;
+    var used=prodUsed[item.id]||0;
+    var curQty=pend[item.id]!==undefined?pend[item.id].cur:item.qty;
+    var usage=Math.round((prev+recv+prod-used-curQty)*10)/10;
+    if(usage<0)usage=0; // Edge case: negative usage
+    usageItems.push({id:item.id,usage:usage});
+  });
+  return{date:today,items:usageItems};
+}
+
+function saveUsageData(entry){
+  if(!entry||!entry.items.length)return;
+  // Replace if same date exists
+  var exists=false;
+  for(var i=0;i<usageData.length;i++){
+    if(usageData[i].date===entry.date){usageData[i]=entry;exists=true;break;}
+  }
+  if(!exists)usageData.unshift(entry);
+  // Keep last 90 days
+  if(usageData.length>90)usageData=usageData.slice(0,90);
+}
+
+function getRecommendedMin(itemId,factor){
+  if(!factor)factor=autoMinCfg.factor||2;
+  // Get last 14 days of usage
+  var sorted=usageData.slice().sort(function(a,b){return a.date>b.date?-1:a.date<b.date?1:0;});
+  var days=sorted.slice(0,14);
+  var usages=[];
+  days.forEach(function(d){
+    var found=d.items.find(function(u){return u.id===itemId;});
+    if(found)usages.push(found.usage);
+    else usages.push(0);
+  });
+  if(usages.length<1)return null;
+  var sum=usages.reduce(function(s,v){return s+v;},0);
+  var avg=sum/usages.length;
+  return Math.ceil(avg*factor);
+}
+
+function getUsageDaysCount(){
+  return usageData.length;
+}
+
+function getAllRecommendedMins(){
+  var results=[];
+  var days=getUsageDaysCount();
+  items.forEach(function(item){
+    var rec=getRecommendedMin(item.id);
+    if(rec!==null&&rec>0){
+      results.push({id:item.id,name:item.name,unit:item.unit,currentMin:item.min,recommended:rec,cat:item.cat});
+    }
+  });
+  return results;
+}
+
+function applyRecommendedMins(){
+  var days=getUsageDaysCount();
+  if(days<7)return 0;
+  var recs=getAllRecommendedMins();
+  var count=0;
+  recs.forEach(function(r){
+    var item=items.find(function(i){return i.id===r.id;});
+    if(item&&r.recommended>0){
+      item.min=r.recommended;
+      item.autoMin=true;
+      count++;
+    }
+  });
+  return count;
+}
+
 function commitP(){
   var changed=Object.entries(pend).filter(function(e){return e[1].cur!==e[1].bef;});
   if(!changed.length){pend={};updateBanner();return;}
@@ -834,12 +1229,25 @@ function commitP(){
     changes:changed.map(function(e){var i=items.find(function(x){return x.id===parseInt(e[0]);});return{itemId:parseInt(e[0]),name:i?i.name:'?',unit:i?i.unit:'',bef:e[1].bef,aft:e[1].cur,d:Math.round((e[1].cur-e[1].bef)*10)/10};})
   });
   if(closes.length>90)closes=closes.slice(0,90);
+
+  // Calculate and save usage data
+  var usageEntry=calcUsage();
+  if(usageEntry)saveUsageData(usageEntry);
+
+  // Auto-apply min values if enabled
+  var autoApplied=0;
+  if(autoMinCfg.enabled&&getUsageDaysCount()>=7){
+    autoApplied=applyRecommendedMins();
+  }
+
   pend={};sv();render();
   var cb=document.getElementById('CB');
   cb.style.background='var(--grn)';
-  cb.innerHTML='<div style="flex:1;color:#fff;font-size:14px;font-weight:600;text-align:center">✓ 재고 파악 완료</div>';
+  var msg='✓ 재고 파악 완료';
+  if(autoApplied>0)msg+=' · 기준 재고량 '+autoApplied+'개 자동 조정';
+  cb.innerHTML='<div style="flex:1;color:#fff;font-size:14px;font-weight:600;text-align:center">'+msg+'</div>';
   cb.classList.add('on');
-  setTimeout(function(){cb.classList.remove('on');cb.style.background='var(--chg)';updateBanner();},1600);
+  setTimeout(function(){cb.classList.remove('on');cb.style.background='var(--chg)';updateBanner();},autoApplied>0?2500:1600);
 }
 function cancelP(){if(!hasPend())return;if(!confirm('변경 사항을 취소할까요?'))return;pend={};render();}
 
@@ -1274,7 +1682,11 @@ function rSet(el){
   h+='<div class="stb">'
     +'<button class="st '+(stab==='items'?'on':'')+'" onclick="stab=\'items\';render()">품목 관리</button>'
     +'<button class="st '+(stab==='rec'?'on':'')+'" onclick="stab=\'rec\';render()">레시피</button>'
+    +'<button class="st '+(stab==='automin'?'on':'')+'" onclick="stab=\'automin\';render()">자동 기준</button>'
     +'</div>';
+  if(stab==='automin'){
+    rSetAutoMin(el,h);return;
+  }
   if(stab==='items'){
     h+='<div class="card">';
     items.forEach(function(item){
@@ -1303,6 +1715,125 @@ function rSet(el){
   }
   el.innerHTML=h;
 }
+function rSetAutoMin(el,h){
+  var days=getUsageDaysCount();
+  var hasEnough=days>=7;
+  var factors=[{v:1.5,l:'1.5일'},{v:2,l:'2일'},{v:2.5,l:'2.5일'},{v:3,l:'3일'}];
+
+  h+='<div class="sec">자동 기준 재고량</div>';
+  h+='<div class="fcard">';
+
+  // Toggle switch
+  h+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">'
+    +'<div><div style="font-size:14px;font-weight:600">자동 조정</div>'
+    +'<div style="font-size:11px;color:var(--t2);margin-top:2px">파악 완료 시 기준 재고량 자동 업데이트</div></div>'
+    +'<label style="position:relative;display:inline-block;width:48px;height:28px;cursor:pointer">'
+    +'<input type="checkbox" id="am-toggle" '+(autoMinCfg.enabled?'checked':'')+' onchange="toggleAutoMin(this.checked)" style="opacity:0;width:0;height:0">'
+    +'<span style="position:absolute;inset:0;background:'+(autoMinCfg.enabled?'var(--grn)':'var(--b2)')+';border-radius:28px;transition:background .3s"></span>'
+    +'<span style="position:absolute;top:2px;left:'+(autoMinCfg.enabled?'22px':'2px')+';width:24px;height:24px;background:#fff;border-radius:50%;transition:left .3s;box-shadow:var(--shadow-sm)"></span>'
+    +'</label></div>';
+
+  // Safety factor selector
+  h+='<div style="margin-bottom:16px">'
+    +'<div style="font-size:13px;font-weight:600;margin-bottom:8px">안전 계수 (며칠분 재고 확보)</div>'
+    +'<div style="display:flex;gap:8px">';
+  factors.forEach(function(f){
+    var on=autoMinCfg.factor===f.v;
+    h+='<button onclick="setAutoMinFactor('+f.v+')" style="flex:1;padding:10px 4px;border-radius:9px;border:1.5px solid '+(on?'var(--accent)':'var(--b2)')+';background:'+(on?'var(--accent-bg)':'var(--sf2)')+';color:'+(on?'var(--accent)':'var(--t2)')+';font-size:13px;font-weight:'+(on?'700':'500')+';cursor:pointer;font-family:inherit">'+f.l+'</button>';
+  });
+  h+='</div></div>';
+
+  // Data status
+  h+='<div style="background:var(--sf2);border-radius:var(--rs);padding:12px 14px;margin-bottom:16px">'
+    +'<div style="display:flex;align-items:center;gap:8px">'
+    +'<span style="font-size:16px">'+(hasEnough?'📊':'⏳')+'</span>'
+    +'<div><div style="font-size:13px;font-weight:600">수집된 데이터: '+days+'일</div>';
+  if(!hasEnough){
+    h+='<div style="font-size:11px;color:var(--org);margin-top:2px">최소 7일간 데이터가 필요합니다 (현재 '+days+'일)</div>';
+  }else{
+    h+='<div style="font-size:11px;color:var(--grn);margin-top:2px">충분한 데이터가 수집되었습니다</div>';
+  }
+  h+='</div></div></div>';
+
+  // Buttons
+  if(hasEnough){
+    h+='<button class="btn bi" onclick="showRecommendedMins()" style="margin-bottom:10px">추천 기준 확인</button>';
+    h+='<button class="btn bs" onclick="applyRecommendedMinsBtn()" style="margin-bottom:10px">추천 기준 적용</button>';
+  }else{
+    h+='<button class="btn bi" style="margin-bottom:10px;opacity:0.5;pointer-events:none" disabled>추천 기준 확인</button>';
+    h+='<button class="btn bs" style="margin-bottom:10px;opacity:0.5;pointer-events:none" disabled>추천 기준 적용</button>';
+  }
+
+  h+='</div>';
+
+  // Info alert
+  h+='<div class="al inf"><div class="at">작동 방식</div><div class="ab">'
+    +'매일 파악 완료 시 사용량이 자동 계산됩니다.<br>'
+    +'최근 14일 평균 사용량 × 안전 계수 = 추천 기준 재고량<br>'
+    +'자동 조정이 켜져 있으면, 파악 완료 시 기준치가 자동으로 업데이트됩니다.'
+    +'</div></div>';
+
+  el.innerHTML=h;
+}
+
+function toggleAutoMin(on){
+  autoMinCfg.enabled=on;
+  localStorage.setItem(AUTO_MIN_KEY,JSON.stringify(autoMinCfg));
+  render();
+}
+
+function setAutoMinFactor(f){
+  autoMinCfg.factor=f;
+  localStorage.setItem(AUTO_MIN_KEY,JSON.stringify(autoMinCfg));
+  render();
+}
+
+function showRecommendedMins(){
+  var recs=getAllRecommendedMins();
+  if(!recs.length){alert('추천할 데이터가 없습니다.');return;}
+  var h='<div class="mh"></div><div class="mt">추천 기준 재고량</div>';
+  h+='<div class="al inf" style="margin-bottom:14px"><div class="ab">최근 '+Math.min(getUsageDaysCount(),14)+'일 평균 사용량 × '+autoMinCfg.factor+'일 기준</div></div>';
+  var cats=[];
+  recs.forEach(function(r){if(cats.indexOf(r.cat)<0)cats.push(r.cat);});
+  cats.forEach(function(cat){
+    var catRecs=recs.filter(function(r){return r.cat===cat;});
+    h+='<div class="sec">'+cat+'</div><div class="card">';
+    catRecs.forEach(function(r){
+      var diff=r.recommended-r.currentMin;
+      var dc=diff>0?'var(--plus)':diff<0?'var(--red)':'var(--t3)';
+      var ds=diff>0?'+'+diff:diff<0?String(diff):'±0';
+      h+='<div class="row"><div style="flex:1"><div style="font-size:13px;font-weight:600">'+r.name+'</div>'
+        +'<div style="font-size:11px;color:var(--t3);margin-top:2px">현재 기준: '+r.currentMin+r.unit+'</div></div>'
+        +'<div style="text-align:right"><div style="font-size:14px;font-weight:700">'+r.recommended+'<span style="font-size:11px;font-weight:400;color:var(--t3)"> '+r.unit+'</span></div>'
+        +'<div style="font-size:10px;font-weight:600;color:'+dc+'">'+ds+'</div></div></div>';
+    });
+    h+='</div>';
+  });
+  h+='<button class="btn bs" onclick="applyRecommendedMinsBtn();closeOv(\'ov-automin\')" style="margin-top:14px;margin-bottom:8px">추천 기준 적용</button>';
+  h+='<button class="btn bg" style="width:100%" onclick="closeOv(\'ov-automin\')">닫기</button>';
+
+  // Create overlay if not exists
+  var ov=document.getElementById('ov-automin');
+  if(!ov){
+    ov=document.createElement('div');
+    ov.className='ov';ov.id='ov-automin';
+    ov.innerHTML='<div class="mo" id="am-body"></div>';
+    document.body.appendChild(ov);
+    ov.addEventListener('click',function(e){if(e.target===ov)closeOv('ov-automin');});
+  }
+  document.getElementById('am-body').innerHTML=h;
+  openOv('ov-automin');
+}
+
+function applyRecommendedMinsBtn(){
+  var days=getUsageDaysCount();
+  if(days<7){alert('최소 7일간 데이터가 필요합니다 (현재 '+days+'일)');return;}
+  if(!confirm('추천 기준 재고량을 적용할까요?'))return;
+  var count=applyRecommendedMins();
+  sv();render();
+  showToast('✓ '+count+'개 품목 기준 재고량 적용 완료','var(--grn)');
+}
+
 function hdrAct(){if(tab==='set'&&stab==='items')openEI(null);}
 
 // ── ITEM EDIT ────────────────────────────────────────
